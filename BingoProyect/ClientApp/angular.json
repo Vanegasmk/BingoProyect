@@ -14,7 +14,6 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "progress": false,
-            "extractCss": true,
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -24,6 +23,10 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
+            ],
+            "allowedCommonJsDependencies": [
+              "zen-observable",
+              "graphql-tag"
             ],
             "scripts": []
           },
@@ -38,7 +41,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
