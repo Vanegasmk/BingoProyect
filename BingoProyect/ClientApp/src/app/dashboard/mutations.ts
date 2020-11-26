@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 
 export const CREATE_ROOM = gql`
     mutation($input: RoomInput!) {
-        createRoom($input: $input) {
+        createRoom(input: $input) {
             id
             name
             code
