@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { GraphQLModule } from './graphql.module';
@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 
 import { ClipboardModule } from 'ngx-clipboard';
 
+import { AuthGuard } from './auth.service';
 
 
 
@@ -34,15 +35,16 @@ import { ClipboardModule } from 'ngx-clipboard';
     HttpClientModule,
     FormsModule,
     ClipboardModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: LoginComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'dashboard', component: DashboardComponent},
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
     ]),
     GraphQLModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
