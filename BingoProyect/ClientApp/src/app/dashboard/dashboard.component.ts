@@ -5,7 +5,6 @@ import { ROOMS_QUERY } from './queries';
 import { CREATE_ROOM, DELETE_ROOM } from './mutations';
 import { ClipboardService } from 'ngx-clipboard';
 import Swal from 'sweetalert2';
-import path from 'path';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,10 +13,11 @@ import path from 'path';
 })
 export class DashboardComponent {
 
-
+ 
   showForm = false;
   rooms: Room[];
   currentRoom: Room;
+  public admin = JSON.parse(localStorage.getItem("admin"));
 
   constructor(private apollo: Apollo,private clipboardService: ClipboardService) { 
     this.currentRoom = { id: -1, name: '', code: null};
@@ -102,7 +102,7 @@ export class DashboardComponent {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         this.deleteRoom(room);
-        Swal.fire('Removed', '', 'warning')
+        Swal.fire('Removed', '', 'success')
       }
     })
   }
@@ -110,6 +110,7 @@ export class DashboardComponent {
   removeLocalStorage()//Remove 'Admin' localstorage
   { 
     localStorage.removeItem("admin");
+    localStorage.removeItem("token");
   }
 
   createRandomCode()//Generates a hexadecimal code
@@ -117,5 +118,6 @@ export class DashboardComponent {
     var code = (Math.random() * 0xffff * 1000000).toString(16);
     return code.slice(0, 6).toString();
   }
+  
   
 }
