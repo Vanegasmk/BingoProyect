@@ -41,7 +41,7 @@ export class LoginComponent {
 
       const FindAdmin = this.Admins.find((admin) => admin.email === email && admin.password === Md5.init(password)); // Find admin in Admins[]
 
-      if ( FindAdmin != null) {
+      if (FindAdmin != null) {
 
         localStorage.setItem("token",Md5.init('logged' + email)); // Set token when logged in localstorage
         localStorage.setItem("admin",JSON.stringify(FindAdmin)); // Set user admin logged  in localstorage
