@@ -13,6 +13,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component'; // Components 
 import { LoginComponent } from './login/login.component'; 
+import { RoomComponent } from './room/room.component'; 
 
 import { ClipboardModule } from 'ngx-clipboard';
 
@@ -29,6 +30,7 @@ import { AuthGuard } from './auth.service';
     FetchDataComponent,
     DashboardComponent,
     LoginComponent,
+    RoomComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -41,6 +43,7 @@ import { AuthGuard } from './auth.service';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: 'room/:code', component:RoomComponent}
     ]),
     GraphQLModule
   ],
