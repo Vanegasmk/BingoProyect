@@ -36,6 +36,7 @@ namespace BingoProyect
             //dependency injection
             services.AddScoped<AdminRepository>();
             services.AddScoped<RoomRepository>();
+            services.AddScoped<NumeroRepository>();
             services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
             services.AddScoped<RoomSchema>();
 
