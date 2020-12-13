@@ -35,12 +35,12 @@ namespace BingoProyect.GraphQL.Querys
                               });
 
             Field<CardboardType>("cardboard",
-            arguments: new QueryArguments(
-                new QueryArgument<IntGraphType> { Name = "id" }),
-            resolve: context =>
-            {
-                return roomRepository.FindCardboard(context.GetArgument<long>("id"));
-            });
+                                arguments: new QueryArguments(
+                                    new QueryArgument<IntGraphType> { Name = "id" }),
+                                resolve: context =>
+                                {
+                                    return roomRepository.FindCardboard(context.GetArgument<long>("id"));
+                                });
         }
     }
 }
