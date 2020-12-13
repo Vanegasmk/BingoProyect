@@ -22,11 +22,18 @@ namespace  BingoProyect.GraphQL.Querys {
                               resolve: context => {
                                   return adminRepository.All(context);
                               });
+
             Field<ListGraphType<NumeroType>>("numero",
                               arguments: new QueryArguments(
                                   new QueryArgument<IntGraphType> { Name = "num"}),
                               resolve: context => {
                                   return numeroRepository.All(context);
+
+            Field<CardboardType>("cardboard",
+                              arguments: new QueryArguments(
+                                  new QueryArgument<IntGraphType> { Name = "id" }),
+                              resolve: context => {
+                                  return roomRepository.FindCardboard(context.GetArgument<long>("id"));
                               });
         }
     }

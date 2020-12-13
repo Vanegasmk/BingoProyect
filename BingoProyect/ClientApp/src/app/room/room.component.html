@@ -1,1 +1,328 @@
-<p>room works!</p>
+<div class="container-login100" *ngIf="showFormLogin">
+    <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+        <form class="login100-form validate-form flex-sb flex-w" [formGroup]="userForm" (ngSubmit)="setNumberCards(userForm.value)">
+            <span *ngIf="userForm.get('cards').hasError('required') && userForm.get('cards').touched">Insert numeric characters</span>
+            <div class="wrap-input100 validate-input m-b-36">
+                <input class="input100" type="number" formControlName="cards" placeholder="How many cards do you want?" required>
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="container-login100-form-btn">
+                <button  type="submit" class="login100-form-btn">
+                    Enter To Room
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<div *ngIf="showFormUser">
+    <div id="cardboards" *ngIf="showFormGame">
+        <div id="cardboard" style="padding: 2%; background-color: lightgreen;">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="5" style="text-align: center; height: 7vh; font-size: 2.5vw; letter-spacing: 1.5vw; color: white; background-color: #a04000;">
+                            B I N G O
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="number-container">
+                        <td>
+                            <div><input class="number" type="text" value="{{cardboard1.numbers[1]}}" disabled></div>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[2]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[3]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[4]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[5]}}" disabled>
+                        </td>
+                    </tr>
+                    <tr class="number-container">
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[6]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[7]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[8]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[9]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[10]}}" disabled>
+                        </td>
+                    </tr>
+                    <tr class="number-container">
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[11]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[12]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[13]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[14]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[15]}}" disabled>
+                        </td>
+                    </tr>
+                    <tr class="number-container">
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[16]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[17]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[18]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[19]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[20]}}" disabled>
+                        </td>
+                    </tr>
+                    <tr class="number-container">
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[21]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[22]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[23]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type= "text" value="{{cardboard1.numbers[24]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard1.numbers[0]}}" disabled>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+
+
+           <div *ngIf="cardboard2">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="5" style="text-align: center; height: 7vh; font-size: 2.5vw; letter-spacing: 1.5vw; color: white; background-color: #a04000;">
+                            B I N G O
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="number-container">
+                        <td>
+                            <div><input class="number" type="text" value="{{cardboard2.numbers[1]}}" disabled></div>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[2]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[3]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[4]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[5]}}" disabled>
+                        </td>
+                    </tr>
+                    <tr class="number-container">
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[6]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[7]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[8]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[9]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[10]}}" disabled>
+                        </td>
+                    </tr>
+                    <tr class="number-container">
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[11]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[12]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[13]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[14]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[15]}}" disabled>
+                        </td>
+                    </tr>
+                    <tr class="number-container">
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[16]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[17]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[18]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[19]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[20]}}" disabled>
+                        </td>
+                    </tr>
+                    <tr class="number-container">
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[21]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[22]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[23]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type= "text" value="{{cardboard2.numbers[24]}}" disabled>
+                        </td>
+                        <td>
+                            <input class="number" type="text" value="{{cardboard2.numbers[0]}}" disabled>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+           </div>
+
+
+            <div *ngIf="cardboard3">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="5" style="text-align: center; height: 7vh; font-size: 2.5vw; letter-spacing: 1.5vw; color: white; background-color: #a04000;">
+                                B I N G O
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="number-container">
+                            <td>
+                                <div><input class="number" type="text" value="{{cardboard3.numbers[1]}}" disabled></div>
+                            </td>
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[2]}}" disabled>
+                            </td>
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[3]}}" disabled>
+                            </td>
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[4]}}" disabled>
+                            </td>
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[5]}}" disabled>
+                            </td>
+                        </tr>
+                        <tr class="number-container">
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[6]}}" disabled>
+                            </td>
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[7]}}" disabled>
+                            </td>
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[8]}}" disabled>
+                            </td>
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[9]}}" disabled>
+                            </td>
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[10]}}" disabled>
+                            </td>
+                        </tr>
+                        <tr class="number-container">
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[11]}}" disabled>
+                            </td>
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[12]}}" disabled>
+                            </td>
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[13]}}" disabled>
+                            </td>
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[14]}}" disabled>
+                            </td>
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[15]}}" disabled>
+                            </td>
+                        </tr>
+                        <tr class="number-container">
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[16]}}" disabled>
+                            </td>
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[17]}}" disabled>
+                            </td>
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[18]}}" disabled>
+                            </td>
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[19]}}" disabled>
+                            </td>
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[20]}}" disabled>
+                            </td>
+                        </tr>
+                        <tr class="number-container">
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[21]}}" disabled>
+                            </td>
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[22]}}" disabled>
+                            </td>
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[23]}}" disabled>
+                            </td>
+                            <td>
+                                <input class="number" type= "text" value="{{cardboard3.numbers[24]}}" disabled>
+                            </td>
+                            <td>
+                                <input class="number" type="text" value="{{cardboard3.numbers[0]}}" disabled>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>

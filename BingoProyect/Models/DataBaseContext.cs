@@ -12,6 +12,7 @@ namespace BingoProyect.Models
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Numero> Numeros { get; set; }
+        public DbSet<Cardboard> Cardboards { get; set; }
 
     }
 }

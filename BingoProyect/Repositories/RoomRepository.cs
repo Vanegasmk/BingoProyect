@@ -35,6 +35,27 @@ namespace BingoProyect.Repositories
             return room; 
         }
 
+        public Cardboard FindCardboard(long id)
+        {
+            return _context.Cardboards.Find(id);
+        }
+        
+        public async Task<Cardboard> AddCardboard()
+        {
+            Cardboard cardboard = new Cardboard();
+            cardboard.Numbers = new int[5];
+            var random = new Random();
+            HashSet<int> numbers = new HashSet<int>();
+            while (numbers.Count < 25)
+            {
+                numbers.Add(random.Next(1,49));
+            }
+            cardboard.Numbers = System.Linq.Enumerable.ToArray(numbers);
+            _context.Cardboards.Add(cardboard);
+            await _context.SaveChangesAsync();
+            return cardboard;
+        }
+
          public async Task<Room> Remove(long id) {
             var room = await _context.Rooms.FindAsync(id);
             if (room == null)
