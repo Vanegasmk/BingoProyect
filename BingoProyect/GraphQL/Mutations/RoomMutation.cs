@@ -19,6 +19,12 @@ namespace  BingoProyect.GraphQL.Mutations {
                               resolve: context => {
                                   return roomRepository.Remove(context.GetArgument<long>("id"));
                               });
+
+            Field<CardboardType>("createCardboard",
+                                resolve: context => {
+                                    return roomRepository.AddCardboard();
+                                }
+            );                              
         }
     }
 }
