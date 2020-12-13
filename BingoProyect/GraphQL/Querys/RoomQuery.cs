@@ -7,7 +7,7 @@ using BingoProyect.Models;
 namespace  BingoProyect.GraphQL.Querys {
     class RoomQuery : ObjectGraphType
     {
-        public RoomQuery(RoomRepository roomRepository, AdminRepository adminRepository)
+        public RoomQuery(RoomRepository roomRepository, AdminRepository adminRepository, NumeroRepository numeroRepository)
         {
             Field<ListGraphType<RoomType>>("rooms",
                               arguments: new QueryArguments(new QueryArgument<StringGraphType> { Name = "name"}),
@@ -21,6 +21,12 @@ namespace  BingoProyect.GraphQL.Querys {
                                   new QueryArgument<StringGraphType> { Name = "password"}),
                               resolve: context => {
                                   return adminRepository.All(context);
+                              });
+            Field<ListGraphType<NumeroType>>("numero",
+                              arguments: new QueryArguments(
+                                  new QueryArgument<IntGraphType> { Name = "num"}),
+                              resolve: context => {
+                                  return numeroRepository.All(context);
                               });
         }
     }

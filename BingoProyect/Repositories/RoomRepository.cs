@@ -32,7 +32,7 @@ namespace BingoProyect.Repositories
         public async Task<Room> Add(Room room) {
             _context.Rooms.Add(room);
             await _context.SaveChangesAsync();
-            return room;
+            return room; 
         }
 
          public async Task<Room> Remove(long id) {
