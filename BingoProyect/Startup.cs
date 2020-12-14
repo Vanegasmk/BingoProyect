@@ -14,6 +14,8 @@ using GraphQL.Server;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using GraphQL.Server.Ui.Playground;
 using BingoProyect.Hubs;
+using GraphQL.Server.Transports.WebSockets;
+
 
 namespace BingoProyect
 {
@@ -50,7 +52,8 @@ namespace BingoProyect
 
             //Graphql configuration
             services.AddGraphQL(o => { o.ExposeExceptions = true; })
-                    .AddGraphTypes(ServiceLifetime.Scoped);
+                    .AddGraphTypes(ServiceLifetime.Scoped)
+                    .AddWebSockets();
 
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
@@ -87,6 +90,8 @@ namespace BingoProyect
             }
 
             app.UseRouting();
+            app.UseWebSockets();
+            app.UseGraphQLWebSockets<RoomSchema>("/graphql");
 
             app.UseGraphQL<RoomSchema>();
             app.UseGraphQLPlayground(new GraphQLPlaygroundOptions
