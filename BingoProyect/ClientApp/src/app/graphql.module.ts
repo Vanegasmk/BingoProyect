@@ -5,7 +5,7 @@ import {HttpLink} from 'apollo-angular/http';
 import { WebSocketLink } from '@apollo/client/link/ws';
 
 
-const uri = 'wss://localhost:5001/graphql'; // <-- add the URL of the GraphQL server here
+const uri = 'wss://localhost:5001/graphql'; // <-- add the URL of the GraphQL server here with subscriptions type wss
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   return {
     link: new WebSocketLink({
