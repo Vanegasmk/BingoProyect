@@ -25,15 +25,7 @@ namespace BingoProyect.Hubs
             return Clients.Group(groupname).SendAsync("SendNumbers",number);
         }
 
-        public Task SendCardsBingo(string groupname, List<Cardboard> cards)
-        {
-            return Clients.Group(groupname).SendAsync("SendCardsBingo",cards,Context.ConnectionId);
-        }
 
-    //    public  Task SendNumbersBingo(string groupname,List<Int> numbers)
-    //     {
-    //         return Clients.Group(groupname).SendAsync("SendNumbers",numbers);
-    //     }
 
 
     }

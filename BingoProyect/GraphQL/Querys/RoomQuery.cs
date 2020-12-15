@@ -34,6 +34,14 @@ namespace BingoProyect.GraphQL.Querys
                                   return numeroRepository.All(context);
                               });
 
+            Field<ListGraphType<NumeroType>>("numeros",
+                                             arguments: new QueryArguments(
+                                                 new QueryArgument<IntGraphType> { Name = "num" }
+                                             ),
+                                             resolve: context => {
+                                                 return numeroRepository.All(context);
+                                             });
+
             Field<CardboardType>("cardboard",
                                 arguments: new QueryArguments(
                                     new QueryArgument<IntGraphType> { Name = "id" }),

@@ -16,15 +16,15 @@
     </div>
 </div>
 
-<div id="game" *ngIf="showFormAdmin">
+<div id="game">
   <div id="image">
       <img id="tombola" src="https://jpsenlinea.com/assets/tombola2.gif">
   </div>
   <div class="total">Users: {{usersOnline}}</div>
-  <div id="controller">
-      <input type="submit" value="Get new number" id="selector">
+  <div  *ngIf="showFormAdmin" id="controller">
+      <input type="submit" value="Get new number" id="selector" (click)="addNum()">
       <div id="spacer"></div>
-      <input id="number" type="text" disabled value="0">
+      <input id="number" type="text" disabled value="">
       <div id="spacer"></div>
   </div>
   <div id="table">
@@ -33,8 +33,8 @@
               <th colspan="10">Selected numbers</th>
           </thead>
           <tbody>
-              <tr>
-                  <td><p class="list-item"></p></td>
+              <tr *ngFor="let lists of list2.slice().reverse()">
+                  <td><p class="list-item">{{lists}}</p></td>
 
               </tr>
           </tbody>
@@ -59,89 +59,118 @@
                 <tbody>
                     <tr class="number-container">
                       <td>
-                        <input class="number" type="text" value="{{cardboard1.numbers[0]}}" disabled>
+                        <input *ngIf="list2.includes(cardboard1.numbers[0])" class="number" type="text" value="{{cardboard1.numbers[0]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard1.numbers[0])" class="number" type="text" value="{{cardboard1.numbers[0]}}" disabled >
                     </td>
                         <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[1]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[1])" class="number" type="text" value="{{cardboard1.numbers[1]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[1])" class="number" type="text" value="{{cardboard1.numbers[1]}}" disabled >
                         </td>
                         <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[2]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[2])" class="number" type="text" value="{{cardboard1.numbers[2]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[2])" class="number" type="text" value="{{cardboard1.numbers[2]}}" disabled >
                         </td>
                         <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[3]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[3])" class="number" type="text" value="{{cardboard1.numbers[3]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[3])" class="number" type="text" value="{{cardboard1.numbers[3]}}" disabled >
                         </td>
                         <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[4]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[4])" class="number" type="text" value="{{cardboard1.numbers[4]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[4])" class="number" type="text" value="{{cardboard1.numbers[4]}}" disabled >
                         </td>
 
                     </tr>
                     <tr class="number-container">
+                      <td>
+                        <input *ngIf="list2.includes(cardboard1.numbers[5])" class="number" type="text" value="{{cardboard1.numbers[5]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard1.numbers[5])" class="number" type="text" value="{{cardboard1.numbers[5]}}" disabled >
+                    </td>
                         <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[5]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[6])" class="number" type="text" value="{{cardboard1.numbers[6]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[6])" class="number" type="text" value="{{cardboard1.numbers[6]}}" disabled >
                         </td>
                         <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[6]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[7])" class="number" type="text" value="{{cardboard1.numbers[7]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[7])" class="number" type="text" value="{{cardboard1.numbers[7]}}" disabled >
                         </td>
                         <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[7]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[8])" class="number" type="text" value="{{cardboard1.numbers[8]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[8])" class="number" type="text" value="{{cardboard1.numbers[8]}}" disabled >
                         </td>
                         <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[8]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[9])" class="number" type="text" value="{{cardboard1.numbers[9]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[9])" class="number" type="text" value="{{cardboard1.numbers[9]}}" disabled >
                         </td>
-                        <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[9]}}" disabled>
-                        </td>
+
                     </tr>
                     <tr class="number-container">
+                      <td>
+                        <input *ngIf="list2.includes(cardboard1.numbers[10])" class="number" type="text" value="{{cardboard1.numbers[10]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard1.numbers[10])" class="number" type="text" value="{{cardboard1.numbers[10]}}" disabled >
+                    </td>
                         <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[10]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[11])" class="number" type="text" value="{{cardboard1.numbers[11]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[11])" class="number" type="text" value="{{cardboard1.numbers[11]}}" disabled >
                         </td>
                         <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[11]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[12])" class="number" type="text" value="{{cardboard1.numbers[12]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[12])" class="number" type="text" value="{{cardboard1.numbers[12]}}" disabled >
                         </td>
                         <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[12]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[13])" class="number" type="text" value="{{cardboard1.numbers[13]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[13])" class="number" type="text" value="{{cardboard1.numbers[13]}}" disabled >
                         </td>
                         <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[13]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[14])" class="number" type="text" value="{{cardboard1.numbers[14]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[14])" class="number" type="text" value="{{cardboard1.numbers[14]}}" disabled >
                         </td>
-                        <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[14]}}" disabled>
-                        </td>
+
                     </tr>
                     <tr class="number-container">
+                      <td>
+                        <input *ngIf="list2.includes(cardboard1.numbers[15])" class="number" type="text" value="{{cardboard1.numbers[15]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard1.numbers[15])" class="number" type="text" value="{{cardboard1.numbers[15]}}" disabled >
+                    </td>
                         <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[15]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[16])" class="number" type="text" value="{{cardboard1.numbers[16]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[16])" class="number" type="text" value="{{cardboard1.numbers[16]}}" disabled >
                         </td>
                         <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[16]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[17])" class="number" type="text" value="{{cardboard1.numbers[17]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[17])" class="number" type="text" value="{{cardboard1.numbers[17]}}" disabled >
                         </td>
                         <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[17]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[18])" class="number" type="text" value="{{cardboard1.numbers[18]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[18])" class="number" type="text" value="{{cardboard1.numbers[18]}}" disabled >
                         </td>
                         <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[18]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[19])" class="number" type="text" value="{{cardboard1.numbers[19]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[19])" class="number" type="text" value="{{cardboard1.numbers[19]}}" disabled >
                         </td>
-                        <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[19]}}" disabled>
-                        </td>
+
                     </tr>
                     <tr class="number-container">
+                      <td>
+                        <input *ngIf="list2.includes(cardboard1.numbers[20])" class="number" type="text" value="{{cardboard1.numbers[20]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard1.numbers[20])" class="number" type="text" value="{{cardboard1.numbers[20]}}" disabled >
+                    </td>
                         <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[20]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[21])" class="number" type="text" value="{{cardboard1.numbers[21]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[21])" class="number" type="text" value="{{cardboard1.numbers[21]}}" disabled >
                         </td>
                         <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[21]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[22])" class="number" type="text" value="{{cardboard1.numbers[22]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[22])" class="number" type="text" value="{{cardboard1.numbers[22]}}" disabled >
                         </td>
                         <td>
-                            <input class="number" type="text" value="{{cardboard1.numbers[22]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[23])" class="number" type="text" value="{{cardboard1.numbers[23]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[23])" class="number" type="text" value="{{cardboard1.numbers[23]}}" disabled >
                         </td>
                         <td>
-                            <input class="number" type= "text" value="{{cardboard1.numbers[23]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard1.numbers[24])" class="number" type="text" value="{{cardboard1.numbers[24]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard1.numbers[24])" class="number" type="text" value="{{cardboard1.numbers[24]}}" disabled >
                         </td>
-                        <td>
-                          <input class="number" type= "text" value="{{cardboard1.numbers[24]}}" disabled>
-                      </td>
+
                     </tr>
 
                 </tbody>
@@ -158,96 +187,123 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="number-container">
-                      <tbody>
-                        <tr class="number-container">
-                          <td>
-                            <input class="number" type="text" value="{{cardboard2.numbers[0]}}" disabled>
-                        </td>
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[1]}}" disabled>
-                            </td>
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[2]}}" disabled>
-                            </td>
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[3]}}" disabled>
-                            </td>
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[4]}}" disabled>
-                            </td>
+                  <tr class="number-container">
+                    <td>
+                      <input *ngIf="list2.includes(cardboard2.numbers[0])" class="number" type="text" value="{{cardboard2.numbers[0]}}" disabled style="background-color: crimson;">
+                      <input *ngIf="!list2.includes(cardboard2.numbers[0])" class="number" type="text" value="{{cardboard2.numbers[0]}}" disabled >
+                  </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[1])" class="number" type="text" value="{{cardboard2.numbers[1]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[1])" class="number" type="text" value="{{cardboard2.numbers[1]}}" disabled >
+                      </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[2])" class="number" type="text" value="{{cardboard2.numbers[2]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[2])" class="number" type="text" value="{{cardboard2.numbers[2]}}" disabled >
+                      </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[3])" class="number" type="text" value="{{cardboard2.numbers[3]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[3])" class="number" type="text" value="{{cardboard2.numbers[3]}}" disabled >
+                      </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[4])" class="number" type="text" value="{{cardboard2.numbers[4]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[4])" class="number" type="text" value="{{cardboard2.numbers[4]}}" disabled >
+                      </td>
 
-                        </tr>
-                        <tr class="number-container">
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[5]}}" disabled>
-                            </td>
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[6]}}" disabled>
-                            </td>
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[7]}}" disabled>
-                            </td>
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[8]}}" disabled>
-                            </td>
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[9]}}" disabled>
-                            </td>
-                        </tr>
-                        <tr class="number-container">
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[10]}}" disabled>
-                            </td>
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[11]}}" disabled>
-                            </td>
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[12]}}" disabled>
-                            </td>
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[13]}}" disabled>
-                            </td>
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[14]}}" disabled>
-                            </td>
-                        </tr>
-                        <tr class="number-container">
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[15]}}" disabled>
-                            </td>
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[16]}}" disabled>
-                            </td>
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[17]}}" disabled>
-                            </td>
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[18]}}" disabled>
-                            </td>
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[19]}}" disabled>
-                            </td>
-                        </tr>
-                        <tr class="number-container">
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[20]}}" disabled>
-                            </td>
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[21]}}" disabled>
-                            </td>
-                            <td>
-                                <input class="number" type="text" value="{{cardboard2.numbers[22]}}" disabled>
-                            </td>
-                            <td>
-                                <input class="number" type= "text" value="{{cardboard2.numbers[23]}}" disabled>
-                            </td>
-                            <td>
-                              <input class="number" type= "text" value="{{cardboard2.numbers[24]}}" disabled>
-                          </td>
-                        </tr>
+                  </tr>
+                  <tr class="number-container">
+                    <td>
+                      <input *ngIf="list2.includes(cardboard2.numbers[5])" class="number" type="text" value="{{cardboard2.numbers[5]}}" disabled style="background-color: crimson;">
+                      <input *ngIf="!list2.includes(cardboard2.numbers[5])" class="number" type="text" value="{{cardboard2.numbers[5]}}" disabled >
+                  </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[6])" class="number" type="text" value="{{cardboard2.numbers[6]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[6])" class="number" type="text" value="{{cardboard2.numbers[6]}}" disabled >
+                      </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[7])" class="number" type="text" value="{{cardboard2.numbers[7]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[7])" class="number" type="text" value="{{cardboard2.numbers[7]}}" disabled >
+                      </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[8])" class="number" type="text" value="{{cardboard2.numbers[8]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[8])" class="number" type="text" value="{{cardboard2.numbers[8]}}" disabled >
+                      </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[9])" class="number" type="text" value="{{cardboard2.numbers[9]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[9])" class="number" type="text" value="{{cardboard2.numbers[9]}}" disabled >
+                      </td>
 
-                    </tbody>
+                  </tr>
+                  <tr class="number-container">
+                    <td>
+                      <input *ngIf="list2.includes(cardboard2.numbers[10])" class="number" type="text" value="{{cardboard2.numbers[10]}}" disabled style="background-color: crimson;">
+                      <input *ngIf="!list2.includes(cardboard2.numbers[10])" class="number" type="text" value="{{cardboard2.numbers[10]}}" disabled >
+                  </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[11])" class="number" type="text" value="{{cardboard2.numbers[11]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[11])" class="number" type="text" value="{{cardboard2.numbers[11]}}" disabled >
+                      </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[12])" class="number" type="text" value="{{cardboard2.numbers[12]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[12])" class="number" type="text" value="{{cardboard2.numbers[12]}}" disabled >
+                      </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[13])" class="number" type="text" value="{{cardboard2.numbers[13]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[13])" class="number" type="text" value="{{cardboard2.numbers[13]}}" disabled >
+                      </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[14])" class="number" type="text" value="{{cardboard2.numbers[14]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[14])" class="number" type="text" value="{{cardboard2.numbers[14]}}" disabled >
+                      </td>
+
+                  </tr>
+                  <tr class="number-container">
+                    <td>
+                      <input *ngIf="list2.includes(cardboard2.numbers[15])" class="number" type="text" value="{{cardboard2.numbers[15]}}" disabled style="background-color: crimson;">
+                      <input *ngIf="!list2.includes(cardboard2.numbers[15])" class="number" type="text" value="{{cardboard2.numbers[15]}}" disabled >
+                  </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[16])" class="number" type="text" value="{{cardboard2.numbers[16]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[16])" class="number" type="text" value="{{cardboard2.numbers[16]}}" disabled >
+                      </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[17])" class="number" type="text" value="{{cardboard2.numbers[17]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[17])" class="number" type="text" value="{{cardboard2.numbers[17]}}" disabled >
+                      </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[18])" class="number" type="text" value="{{cardboard2.numbers[18]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[18])" class="number" type="text" value="{{cardboard2.numbers[18]}}" disabled >
+                      </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[19])" class="number" type="text" value="{{cardboard2.numbers[19]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[19])" class="number" type="text" value="{{cardboard2.numbers[19]}}" disabled >
+                      </td>
+
+                  </tr>
+                  <tr class="number-container">
+                    <td>
+                      <input *ngIf="list2.includes(cardboard2.numbers[20])" class="number" type="text" value="{{cardboard2.numbers[20]}}" disabled style="background-color: crimson;">
+                      <input *ngIf="!list2.includes(cardboard2.numbers[20])" class="number" type="text" value="{{cardboard2.numbers[20]}}" disabled >
+                  </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[21])" class="number" type="text" value="{{cardboard2.numbers[21]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[21])" class="number" type="text" value="{{cardboard2.numbers[21]}}" disabled >
+                      </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[22])" class="number" type="text" value="{{cardboard2.numbers[22]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[22])" class="number" type="text" value="{{cardboard2.numbers[22]}}" disabled >
+                      </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[23])" class="number" type="text" value="{{cardboard2.numbers[23]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[23])" class="number" type="text" value="{{cardboard2.numbers[23]}}" disabled >
+                      </td>
+                      <td>
+                        <input *ngIf="list2.includes(cardboard2.numbers[24])" class="number" type="text" value="{{cardboard2.numbers[24]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="!list2.includes(cardboard2.numbers[24])" class="number" type="text" value="{{cardboard2.numbers[24]}}" disabled >
+                      </td>
+
+                  </tr>
+
+              </tbody>
             </table>
            </div>
 
@@ -264,89 +320,118 @@
                     <tbody>
                       <tr class="number-container">
                         <td>
-                          <input class="number" type="text" value="{{cardboard3.numbers[0]}}" disabled>
+                          <input *ngIf="list2.includes(cardboard3.numbers[0])" class="number" type="text" value="{{cardboard3.numbers[0]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard3.numbers[0])" class="number" type="text" value="{{cardboard3.numbers[0]}}" disabled >
                       </td>
                           <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[1]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[1])" class="number" type="text" value="{{cardboard3.numbers[1]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[1])" class="number" type="text" value="{{cardboard3.numbers[1]}}" disabled >
                           </td>
                           <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[2]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[2])" class="number" type="text" value="{{cardboard3.numbers[2]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[2])" class="number" type="text" value="{{cardboard3.numbers[2]}}" disabled >
                           </td>
                           <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[3]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[3])" class="number" type="text" value="{{cardboard3.numbers[3]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[3])" class="number" type="text" value="{{cardboard3.numbers[3]}}" disabled >
                           </td>
                           <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[4]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[4])" class="number" type="text" value="{{cardboard3.numbers[4]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[4])" class="number" type="text" value="{{cardboard3.numbers[4]}}" disabled >
                           </td>
 
                       </tr>
                       <tr class="number-container">
+                        <td>
+                          <input *ngIf="list2.includes(cardboard3.numbers[5])" class="number" type="text" value="{{cardboard3.numbers[5]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard3.numbers[5])" class="number" type="text" value="{{cardboard3.numbers[5]}}" disabled >
+                      </td>
                           <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[5]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[6])" class="number" type="text" value="{{cardboard3.numbers[6]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[6])" class="number" type="text" value="{{cardboard3.numbers[6]}}" disabled >
                           </td>
                           <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[6]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[7])" class="number" type="text" value="{{cardboard3.numbers[7]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[7])" class="number" type="text" value="{{cardboard3.numbers[7]}}" disabled >
                           </td>
                           <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[7]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[8])" class="number" type="text" value="{{cardboard3.numbers[8]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[8])" class="number" type="text" value="{{cardboard3.numbers[8]}}" disabled >
                           </td>
                           <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[8]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[9])" class="number" type="text" value="{{cardboard3.numbers[9]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[9])" class="number" type="text" value="{{cardboard3.numbers[9]}}" disabled >
                           </td>
-                          <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[9]}}" disabled>
-                          </td>
+
                       </tr>
                       <tr class="number-container">
+                        <td>
+                          <input *ngIf="list2.includes(cardboard3.numbers[10])" class="number" type="text" value="{{cardboard3.numbers[10]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard3.numbers[10])" class="number" type="text" value="{{cardboard3.numbers[10]}}" disabled >
+                      </td>
                           <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[10]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[11])" class="number" type="text" value="{{cardboard3.numbers[11]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[11])" class="number" type="text" value="{{cardboard3.numbers[11]}}" disabled >
                           </td>
                           <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[11]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[12])" class="number" type="text" value="{{cardboard3.numbers[12]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[12])" class="number" type="text" value="{{cardboard3.numbers[12]}}" disabled >
                           </td>
                           <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[12]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[13])" class="number" type="text" value="{{cardboard3.numbers[13]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[13])" class="number" type="text" value="{{cardboard3.numbers[13]}}" disabled >
                           </td>
                           <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[13]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[14])" class="number" type="text" value="{{cardboard3.numbers[14]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[14])" class="number" type="text" value="{{cardboard3.numbers[14]}}" disabled >
                           </td>
-                          <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[14]}}" disabled>
-                          </td>
+
                       </tr>
                       <tr class="number-container">
+                        <td>
+                          <input *ngIf="list2.includes(cardboard3.numbers[15])" class="number" type="text" value="{{cardboard3.numbers[15]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard3.numbers[15])" class="number" type="text" value="{{cardboard3.numbers[15]}}" disabled >
+                      </td>
                           <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[15]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[16])" class="number" type="text" value="{{cardboard3.numbers[16]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[16])" class="number" type="text" value="{{cardboard3.numbers[16]}}" disabled >
                           </td>
                           <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[16]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[17])" class="number" type="text" value="{{cardboard3.numbers[17]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[17])" class="number" type="text" value="{{cardboard3.numbers[17]}}" disabled >
                           </td>
                           <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[17]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[18])" class="number" type="text" value="{{cardboard3.numbers[18]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[18])" class="number" type="text" value="{{cardboard3.numbers[18]}}" disabled >
                           </td>
                           <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[18]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[19])" class="number" type="text" value="{{cardboard3.numbers[19]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[19])" class="number" type="text" value="{{cardboard3.numbers[19]}}" disabled >
                           </td>
-                          <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[19]}}" disabled>
-                          </td>
+
                       </tr>
                       <tr class="number-container">
+                        <td>
+                          <input *ngIf="list2.includes(cardboard3.numbers[20])" class="number" type="text" value="{{cardboard3.numbers[20]}}" disabled style="background-color: crimson;">
+                          <input *ngIf="!list2.includes(cardboard3.numbers[20])" class="number" type="text" value="{{cardboard3.numbers[20]}}" disabled >
+                      </td>
                           <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[20]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[21])" class="number" type="text" value="{{cardboard3.numbers[21]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[21])" class="number" type="text" value="{{cardboard3.numbers[21]}}" disabled >
                           </td>
                           <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[21]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[22])" class="number" type="text" value="{{cardboard3.numbers[22]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[22])" class="number" type="text" value="{{cardboard3.numbers[22]}}" disabled >
                           </td>
                           <td>
-                              <input class="number" type="text" value="{{cardboard3.numbers[22]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[23])" class="number" type="text" value="{{cardboard3.numbers[23]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[23])" class="number" type="text" value="{{cardboard3.numbers[23]}}" disabled >
                           </td>
                           <td>
-                              <input class="number" type= "text" value="{{cardboard3.numbers[23]}}" disabled>
+                            <input *ngIf="list2.includes(cardboard3.numbers[24])" class="number" type="text" value="{{cardboard3.numbers[24]}}" disabled style="background-color: crimson;">
+                            <input *ngIf="!list2.includes(cardboard3.numbers[24])" class="number" type="text" value="{{cardboard3.numbers[24]}}" disabled >
                           </td>
-                          <td>
-                            <input class="number" type= "text" value="{{cardboard3.numbers[24]}}" disabled>
-                        </td>
+
                       </tr>
 
                   </tbody>

@@ -1,3 +1,4 @@
+import { CREATE_NUM } from './mutations';
 import { Component, OnInit } from "@angular/core";
 import { HubConnection, HubConnectionBuilder } from "@aspnet/signalr"; // signalR Import
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -5,17 +6,18 @@ import { Cardboard } from "./cardboard.interface";
 import Swal from "sweetalert2";
 import { Apollo } from "apollo-angular";
 import { Router, ActivatedRoute } from '@angular/router';
-import { CARDBOARD_QUERY } from './queries';
+import { CARDBOARD_QUERY, NUMBERS_QUERY} from './queries';
+import {Numero} from "./numero.interface";
 @Component({
   selector: "app-room",
   templateUrl: "./room.component.html",
   styleUrls: ["./room.component.css"],
 })
 export class RoomComponent {
-  public showFormLogin = true; 
+  public showFormLogin = true;
   public showFormGame = false; //show div from cards
   public showFormAdmin = false; //show div from admin
-  public showFormUser = false;//show div from user 
+  public showFormUser = false;//show div from user
 
   public hubConnection: HubConnection; //variable for connection with signalr
   public room: string; //variable to set room code
@@ -24,11 +26,19 @@ export class RoomComponent {
   public usersOnline: number = 0; //variable to set usersOnline
   public cardboard1: Cardboard;
   public cardboard2: Cardboard;
-  public cardboard3: Cardboard; 
+  public cardboard3: Cardboard;
+  public list1 = [];
+
+  public list : Numero;
+  public currentNumber;
+
+  public list2 = [];
+
+
 
   constructor(
     private ActivatedRoute: ActivatedRoute,
-    private Builder: FormBuilder, 
+    private Builder: FormBuilder,
     private Apollo: Apollo
   ) {
 
@@ -37,14 +47,65 @@ export class RoomComponent {
     });
     this.showForms();
     this.builConnection();
+    this.getList();
+
+
+
+  }
+
+
+  getList() {
+
+    this.Apollo.watchQuery({
+      query: NUMBERS_QUERY,
+      fetchPolicy: "network-only",
+      variables: {},
+    }).valueChanges.subscribe(result =>{
+      this.list = result.data['numeros'];
+          this.list2 = [];
+          for(let propety in this.list){
+            this.list2.push(this.list[propety].num);
+            this.sendMetadataNumber(this.list[propety].num);
+          }
+    })
+
+  }
+
+  addNum(){
+
+    let mutation = CREATE_NUM;
+    this.currentNumber = Math.floor(Math.random() * (75 - 1)) + 1;
+    for(let propety in this.list){
+      this.list2.push(this.list[propety].num);
+    }
+    if(this.list2.includes(this.currentNumber)){
+      this.addNum();
+    }else{
+      const variables = {
+          input:{num: this.currentNumber}
+        }
+        this.Apollo.mutate({
+          mutation:mutation,
+          variables: variables
+        }).subscribe(() =>{
+          this.getList();
+          this.list2 = [];
+          for(let propety in this.list){
+            this.list2.push(this.list[propety].num);
+
+          }
+        });
+
+
+    }
   }
 
 
 
-  showForms()//
-  { 
+  showForms()
+  {
     if("token" in localStorage)
-    { 
+    {
       this.showFormLogin = false;
       this.showFormAdmin =  true;
       this.showFormUser = false;
@@ -68,6 +129,11 @@ export class RoomComponent {
       this.usersOnline = this.usersOnline + msg;
     });
 
+    this.hubConnection.on("SendNumbers", (msg) => {
+      this.list2.push(msg);
+    });
+
+
 
     this.hubConnection.start().then(() => {
       this.getCodeRoom();
@@ -78,7 +144,11 @@ export class RoomComponent {
 
 
   }
-  
+
+  sendMetadataNumber(value){
+    this.hubConnection.invoke("SendNumbersBingo",this.room,value);
+  }
+
   sendCount() {//add a user when they enter the game
     this.hubConnection.invoke("SendCountToGroup", this.room, 1);
   }
@@ -123,9 +193,7 @@ export class RoomComponent {
         id: id
       },
     }).valueChanges.subscribe((result) => {
-      
       if(this.cardboard1 == null && this.totalCards >= 1){
-        
         this.cardboard1 = result.data['cardboard'];
         console.log("primer cartón");
         console.log(this.cardboard1);
@@ -141,4 +209,8 @@ export class RoomComponent {
 
     });
   }
+
+
+
+
 }
