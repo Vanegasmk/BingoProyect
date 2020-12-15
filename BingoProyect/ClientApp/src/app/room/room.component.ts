@@ -29,6 +29,9 @@ export class RoomComponent {
   public cardboard3: Cardboard;
   public list1 = [];
 
+
+  public counterCardboard: number = 0; //variable to set counterCardboard
+
   public list : Numero;
   public currentNumber;
 
@@ -67,17 +70,14 @@ export class RoomComponent {
             this.list2.push(this.list[propety].num);
             this.sendMetadataNumber(this.list[propety].num);
           }
-    })
-
+    });
+    console.log(this.counterCardboard);
   }
 
   addNum(){
 
     let mutation = CREATE_NUM;
     this.currentNumber = Math.floor(Math.random() * (75 - 1)) + 1;
-    for(let propety in this.list){
-      this.list2.push(this.list[propety].num);
-    }
     if(this.list2.includes(this.currentNumber)){
       this.addNum();
     }else{
@@ -89,7 +89,6 @@ export class RoomComponent {
           variables: variables
         }).subscribe(() =>{
           this.getList();
-          this.list2 = [];
           for(let propety in this.list){
             this.list2.push(this.list[propety].num);
 
@@ -195,16 +194,10 @@ export class RoomComponent {
     }).valueChanges.subscribe((result) => {
       if(this.cardboard1 == null && this.totalCards >= 1){
         this.cardboard1 = result.data['cardboard'];
-        console.log("primer cartón");
-        console.log(this.cardboard1);
       }else if(this.cardboard1 != null && this.cardboard2 == null && this.totalCards > 1){
         this.cardboard2 = result.data['cardboard'];
-        console.log("segundo cartón");
-        console.log(this.cardboard2);
       }else if( this.cardboard2 != null && this.cardboard3 == null && this.totalCards >= 3){
         this.cardboard3 = result.data['cardboard'];
-        console.log("tercer cartón");
-        console.log(this.cardboard3);
       }
 
     });
