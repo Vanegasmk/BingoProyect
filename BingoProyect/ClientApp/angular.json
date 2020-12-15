@@ -27,7 +27,8 @@
             ],
             "allowedCommonJsDependencies": [
               "zen-observable",
-              "graphql-tag"
+              "graphql-tag",
+              "subscriptions-transport-ws"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

@@ -20,9 +20,10 @@
   <div id="image">
       <img id="tombola" src="https://jpsenlinea.com/assets/tombola2.gif">
   </div>
-  <div class="total">Users: {{usersOnline}}</div>
+  
   <div  *ngIf="showFormAdmin" id="controller">
-      <input type="submit" value="Get new number" id="selector" (click)="addNum()">
+     <div class="total">Users: {{usersOnline}}</div> 
+     <input type="submit" value="Get new number" id="selector" (click)="addNum()">
       <div id="spacer"></div>
       <input id="number" type="text" disabled value="">
       <div id="spacer"></div>
@@ -59,7 +60,7 @@
                 <tbody>
                     <tr class="number-container">
                       <td>
-                        <input *ngIf="list2.includes(cardboard1.numbers[0])" class="number" type="text" value="{{cardboard1.numbers[0]}}" disabled style="background-color: crimson;">
+                        <input *ngIf="list2.includes(cardboard1.numbers[0])" class="number" type="text" value="{{cardboard1.numbers[0]}}" disabled style="background-color: crimson;" >
                         <input *ngIf="!list2.includes(cardboard1.numbers[0])" class="number" type="text" value="{{cardboard1.numbers[0]}}" disabled >
                     </td>
                         <td>
