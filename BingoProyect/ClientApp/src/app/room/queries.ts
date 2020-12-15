@@ -8,3 +8,13 @@ export const CARDBOARD_QUERY = gql`
     }
   }
 `;
+
+export const NUMBERS_QUERY = gql`
+  query{
+  numeros{
+    id
+    num
+  }
+}
+`;
+

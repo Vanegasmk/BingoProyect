@@ -20,7 +20,7 @@ namespace  BingoProyect.GraphQL.Mutations {
                                   return roomRepository.Remove(context.GetArgument<long>("id"));
                               });
 
-
+            
             Field<NumeroType>("createNumero",
                               arguments: new QueryArguments(new QueryArgument<NonNullGraphType<NumeroInputType>> { Name = "input" }),
                               resolve: context => {
